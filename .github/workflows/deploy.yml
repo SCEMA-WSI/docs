@@ -65,10 +65,10 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Run PostCSS
         run: |
-          postcss ./public/css/main.css -o ./public/css/main.css --use autoprefixer
+          ./node_modules/.bin/postcss ./public/css/main.css -o ./public/css/main.css --use autoprefixer
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
