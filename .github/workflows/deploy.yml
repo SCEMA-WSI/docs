@@ -6,18 +6,33 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm install -g postcss postcss-cli autoprefixer
+          npm install
+
       - name: Build Hugo site
-        run: docker-compose up hugo
+        run: |
+          hugo
+
+      - name: Run PostCSS
+        run: |
+          postcss src/css/main.css -o static/css/main.css --use autoprefixer
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./your-hugo-site/public
+          publish_dir: ./public
