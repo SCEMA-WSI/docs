@@ -51,8 +51,8 @@ jobs:
       - name: Added Step
         run: |
           npm install -g postcss \
-          npm install -g postcss-cli \
-          npm install -g autoprefixer
+          npm install -g autoprefixer \
+          npm install -g postcss-cli
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
