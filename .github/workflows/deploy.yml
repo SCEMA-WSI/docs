@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Hugo
         run: |
-          HUGO_VERSION="0.92.1" # Replace with the desired Hugo version
+          HUGO_VERSION="0.123.7" # Replace with the desired Hugo version
           wget "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
           tar -xzvf "hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
           sudo mv hugo /usr/local/bin/hugo
