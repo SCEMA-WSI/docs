@@ -20,11 +20,11 @@ jobs:
 
       - name: Install Hugo
         run: |
-          HUGO_VERSION="0.123.7" # Replace with the desired Hugo version
-          wget "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
-          tar -xzvf "hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
+          HUGO_VERSION="0.92.1" # Replace with the desired Hugo version
+          wget "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
+          tar -xzvf "hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
           sudo mv hugo /usr/local/bin/hugo
-          rm "hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
+          rm "hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
 
       - name: Install dependencies
         run: |
@@ -37,7 +37,7 @@ jobs:
 
       - name: Run PostCSS
         run: |
-          postcss src/css/main.css -o static/css/main.css --use autoprefixer
+          postcss src/scss/main.scss -o static/css/main.css --use autoprefixer
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
