@@ -1,5 +1,5 @@
-# baseURL = "https://scema-wsi.github.io/docs/"
-baseURL = "/"
+baseURL = "https://scema-wsi.github.io/docs/"
+# baseURL = "/"
 title = "SCEMA-WSI"
 
 # Language settings
