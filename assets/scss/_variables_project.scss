@@ -4,3 +4,10 @@ Add styles or override variables from the theme here.
 
 */
 
+$primary: #2D2E5F  !default;
+$primary-light: lighten($primary, 75%) !default;
+$secondary: #3A88A9 !default;
+$light: #CDCDCD !default;
+$grey:  #888 !default;
+$orange: #00BAD2;
+$td-sidebar-tree-root-color: #222 !default;
