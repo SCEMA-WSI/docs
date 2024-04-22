@@ -1,8 +1,8 @@
 ---
 title: SCEMATK
 linkTitle: SCEMATK
-menu: {main: {weight: 21}}
-weight: 21
+menu: {main: {weight: 25}}
+weight: 25
 ---
 
 {{% pageinfo %}}
