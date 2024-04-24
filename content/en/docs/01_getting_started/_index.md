@@ -60,7 +60,3 @@ The first way is the use the `show_thumb` method. This will operate over the ima
 ```python
 image.show_thumb()
 ```
-
-{{% notice note %}}
-TODO - Add in the thumbnail
-{{% /notice %}}
