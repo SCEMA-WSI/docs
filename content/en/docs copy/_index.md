@@ -1,6 +1,6 @@
 ---
-title: SCEMATK
-linkTitle: SCEMATK
+title: Documentation
+linkTitle: Docs
 menu: {main: {weight: 25}}
 weight: 25
 ---

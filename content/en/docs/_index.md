@@ -5,25 +5,6 @@ menu: {main: {weight: 20}}
 weight: 20
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+Welcome to SCEMA-WSI: Single Cell Extraction and Morphological Analysis of Whole Slide Images! This is a set of tools for efficiently and quickly working with Whole Slide Images (WSI's) with the aim of morphologically profiling individual cells in the tissue. Furthermore, all of the tools here are designed such that once the morphological profiles have been calculated they can be spatially analysed to understand the spatial distribution of different cell phenotypes in the tissue.
 
-This section is where the user documentation for your project lives - all the
-information your users need to understand and successfully use your project.
-
-For large documentation sets we recommend adding content under the headings in
-this section, though if some or all of them don’t apply to your project feel
-free to remove them or add your own. You can see an example of a smaller Docsy
-documentation site in the [Docsy User Guide](https://docsy.dev/docs/), which
-lives in the [Docsy theme
-repo](https://github.com/google/docsy/tree/master/userguide) if you'd like to
-copy its docs section.
-
-Other content such as marketing material, case studies, and community updates
-should live in the [About](/about/) and [Community](/community/) pages.
-
-Find out how to use the Docsy theme in the [Docsy User
-Guide](https://docsy.dev/docs/). You can learn more about how to organize your
-documentation (and how we organized this site) in [Organizing Your
-Content](https://docsy.dev/docs/best-practices/organizing-content/).
+The core of SCEMA-WSI is built around SCEMATK (or the SCEMA ToolKit), this is a Python package that allows users to open up and visualised WSI's in Python as well as apply a range of image processing algorithms. SCEMATK is built using Dask to speed up the analysis of WSI's using parallel processing. For the best results we recommend using `dask_jobqueue` or a similar package to connect to an HPC or a cloud computing service to unlock the full potential of SCEMATK. Some institutions have already added profiles to SCEMATK to make connecting to the HPC as easy as one line of code, have a look in the cluster section of the documentation for more information.
