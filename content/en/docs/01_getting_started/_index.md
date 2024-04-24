@@ -60,3 +60,9 @@ The first way is the use the `show_thumb` method. This will operate over the ima
 ```python
 image.show_thumb()
 ```
+
+Rather than visualising the whole of the WSI, you can also plot just a small region using the `show_region` method. This method takes 4 arguments, the first two are the y and x coordinates of the top left corner of the region you want to plot, the second two are the height and width of the region you want to plot. Here is an example of calling the `show_region` method on our example image:
+
+```python
+image.show_region(20000, 10000, 1000, 1000)
+```
