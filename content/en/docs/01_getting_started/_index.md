@@ -49,6 +49,8 @@ image = read_zarr_img('getting_started.zarr', 'getting_started.json')
 image
 ```
 
+![Example Tile](./tile.png)
+
 This will return a SCEMATK image object. This object is mainly comprised of 3 things, the first of these is a Dask Array that contains the highest resolution image available in the TIFF. If you want to, you can see this Dask Array by running `image.image` in the Jupyter notebook. The second part of the object is a dictionary that contains the metadata that was stored in the `json` file, this can be seen by running `image.info`. The third is a list of the channel names, this can be seen by running `image.channel_names`, by default SCEMATK assumes the image you are reading is RGB. If your image is not RGB you can set the channel names inside the `read_zarr_img` function using the `channel_names` argument. Typically, as a user, you will not have to interact with the `image` object directly, but it is useful to know what is inside it. The other functions in SCEMATK will read and convert the image, image metadata and channel names for you.
 
 ## Visualising an Image
