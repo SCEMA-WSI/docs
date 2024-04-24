@@ -1,6 +1,6 @@
 ---
-title: Getting Started
-description: Get started with SCEMATK
+title: Loading an Image
+description: Load an image with SCEMATK
 weight: 10
 ---
 
