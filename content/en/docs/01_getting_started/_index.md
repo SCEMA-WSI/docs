@@ -68,3 +68,5 @@ Rather than visualising the whole of the WSI, you can also plot just a small reg
 ```python
 image.show_region(20000, 10000, 1000, 1000)
 ```
+
+![Example Region](./region.png)
