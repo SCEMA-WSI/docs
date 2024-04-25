@@ -8,3 +8,27 @@ Processors and processes are integral to how SCEMATK works. SCEMATK considers mo
 
 ## Processes
 
+To have a look at applying processes to an image, let's load the image from the previous tutorial and look at the image thumb and an example region
+
+```python
+from scematk.io import read_zarr_img
+
+image = read_zarr_img('getting_started.zarr', 'getting_started.json')
+image
+```
+
+![Example Tile](./tile.png)
+
+```python
+image.show_thumb()
+```
+
+![Example Thumb](./thumb.png)
+
+```python
+image.show_region(20000, 10000, 1000, 1000)
+```
+
+![Example Region](./region.png)
+
+All of the processes that are available in SCEMATK are stored in the `scematk.process` module.
