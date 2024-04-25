@@ -72,3 +72,27 @@ image.show_region(20000, 10000, 1000, 1000)
 ```
 
 ![Example Region](./region.png)
+
+## Other Useful Features
+
+There are a couple of other features of the SCEMATK Image object that are worth mentioning. Where possible, SCEMATK will perform operations on images measuring distances using microns rather than pixels. To do this it reads the metadata of the TIFF and finds the microns per pixel (mpp) in both the x direction and the y direction. If they are both the same then it will save this as the `mpp` attribute of the image object.
+
+```python
+image.mpp
+```
+
+```
+0.499
+```
+
+If this attribute is not `None`, SCEMATK can use this to convert distances in microns to pixels using the `pixel_from_micron` method. Here SCEMATK finds how many pixels in this image are equivalent to 5 microns.
+
+```python
+image.pixel_from_micron(5)
+```
+
+```
+10.02004008016032
+```
+
+If you are familiar with Dask, the SCEMATK Image object also has `compute` and `persist` functions that will call `compute` and `persist` respectively on the Dask Array that contains the image. This can be useful if you want to force the image to be loaded into memory.
