@@ -10,8 +10,12 @@ So, WSI's are *big*. Very big. Too big to fit into a reasonable amount of memory
 
 Firstly, let's look at an example of tissue segmentation. One way to segment a tissue is using a thresholding algorithm, in this case we will be using Otsu's method. To deal with the large sizes of WSI's, we can tile the image into smaller chunks and then apply the thresholding algorithm to each tile. If we do this, we end up with a tissue mask that looks like this:
 
-![Tiled Tissue Maske](./tisseg_patch.png)
+![Tiled Tissue Mask](./tisseg_patch.png)
 
 Here you can see the distinct tiles that comprise the image and where the segmentation algorithm has been applied to each tile separately. Even though each tile had the same algorithm applied to it, the results are not consistent across the image as the algorithm relies on global intensiy information. SCEMATK uses a different approach to apply the same algorithm, it also tiles the image but it calculates the intensity histogram for each tile and then globally aggregates them. It then uses this to calculate a global threshold and then applies the global threshold to each tile to create a consistent tissue mask across the image. This is what the tissue mask looks like when the algorithm is applied in this way:
 
 ![Whole Tissue Mask](./tisseg_whole.png)
+
+We have used tissue segmentation as an example here as it clearly shows the issue of inconsistent application of the same algorithm across different tiles. But this problem is present in every step of the analysis of WSI's. Another example we can show here is that of stain normalisation. We trained a stain normalisation algorithm on this whole image and then applied it to each tile separately. The results are shown below:
+
+![Normaliser Patched](./norm_patch.png)
