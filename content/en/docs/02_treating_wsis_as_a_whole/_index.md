@@ -19,3 +19,9 @@ Here you can see the distinct tiles that comprise the image and where the segmen
 We have used tissue segmentation as an example here as it clearly shows the issue of inconsistent application of the same algorithm across different tiles. But this problem is present in every step of the analysis of WSI's. Another example we can show here is that of stain normalisation. We trained a stain normalisation algorithm on this whole image and then applied it to each tile separately. The results are shown below:
 
 ![Normaliser Patched](./norm_patch.png)
+
+This is compared to the image when the normalisation algorithm is applied to the whole image:
+
+![Normaliser Whole](./norm_whole.png)
+
+When analysing each tile on its own, these inconsisties between them might not have too much of an effect. But with the current move towards spatial biology and not just trying to analyse one section of tissue, but how that section of tissue compares to the section around it, it is important that the image is as consistent as possible.
