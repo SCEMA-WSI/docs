@@ -50,3 +50,15 @@ image
 ```
 
 ![Raw Image Output](./raw_image_output.png)
+
+This output shows basic information about the image but does not load the image into memory. When using SCEMATK images are only loaded into memory for three reasons: to save a new image that has been created, to fit a model or to display an image. Otherwise, when applying functions to an image rather than actioning them straight away SCEMATK will save those instructions and perform them all at once. This is how SCEMATK is able to handle data that is larger than the amount of memory available to your computer.
+
+## Viewing an Image
+
+These SCEMATK image objects have a lot of functionality to allow you to view them. The simplest of these is the `show_thumb` method that will calculate and then show you a thumbnail of the current image. Remember that this thumbnail is being dynamically calculated and displayed and therefore there may be some processing time required to display it.
+
+```
+image.show_thumb()
+```
+
+![Image Thumbnail](./image_thumb.png)
