@@ -4,7 +4,7 @@ description: Load an image with SCEMATK
 weight: 10
 ---
 
-Hello! Here we are going to show you how to get started with SCEMATK. We will download an image and show you how to open it and visualise it using Python. It is not necessary for this section that you are connected to a HPC or cloud computing service, we will cover this in the next section.
+Hello! Here we are going to show you how to get started with SCEMATK. We will download an image and show you how to open it and visualise it using Python.
 
 ## Installation
 
@@ -16,7 +16,7 @@ pip install scematk
 
 ## Downloading Example Image
 
-To get started we will download an example image to work with. We will use the `download_example` function from SCEMATK to download an example image. Open up a Jupyter notebook (to make following tutorials quicker, you will want to create this on HPC if you have access to one, although not strictly needed here) and then run the folling code (this may take a couple of minutes):
+To get started we will download an example image to work with. We will use the `download_example` function from SCEMATK to download an example image. Open up a Jupyter notebook and then run the following code (this may take a couple of minutes):
 
 ```python
 from scematk.data import download_example
@@ -33,7 +33,7 @@ To enable Dask to properly parallelise the image processing we need to convert t
 ```python
 from scematk.io import tiff_to_zarr
 
-tiff_to_zarr('getting_started.svs', 'getting_started.zarr', 'getting_started.json')
+tiff_to_zarr('getting_started.svs', './raw_image/getting_started.zarr', './raw_image/getting_started.json')
 ```
 
 This takes the TIFF we just downloaded (`getting_started.svs`) and converts it to a `zarr` file (`getting_started.zarr`) and a `json` file (`getting_started.json`). The `json` file contains the metadata that was lost in the conversion.
@@ -43,56 +43,9 @@ This takes the TIFF we just downloaded (`getting_started.svs`) and converts it t
 Now that we have the image in a format that can be read in parallel by dask, we can open it using the `read_zarr_img` function.
 
 ```python
-from scematk.io import read_zarr_img
+from scematk.io import read_zarr_ubimg
 
-image = read_zarr_img('getting_started.zarr', 'getting_started.json')
+image = read_zarr_ubimg('./raw_image/getting_started.zarr', './raw_image/getting_started.json')
 image
 ```
 
-![Example Tile](./tile.png)
-
-This will return a SCEMATK image object. This object is mainly comprised of 3 things, the first of these is a Dask Array that contains the highest resolution image available in the TIFF. If you want to, you can see this Dask Array by running `image.image` in the Jupyter notebook. The second part of the object is a dictionary that contains the metadata that was stored in the `json` file, this can be seen by running `image.info`. The third is a list of the channel names, this can be seen by running `image.channel_names`, by default SCEMATK assumes the image you are reading is RGB. If your image is not RGB you can set the channel names inside the `read_zarr_img` function using the `channel_names` argument. Typically, as a user, you will not have to interact with the `image` object directly, but it is useful to know what is inside it. The other functions in SCEMATK will read and convert the image, image metadata and channel names for you.
-
-## Visualising an Image
-
-The reason that no image is returned when you print the SCEMATK image object is because SCEMATK does not load the image into Python until the very last second where it really has to and when it does it does it in chunks and not necessarily all at one time. This is because the images that we are working with are very large and loading them all at once would be very memory intensive. However, we need to be able to see the images sometimes and SCEMATK has a couple of ways of doing this. 
-
-The first way is the use the `show_thumb` method. This will operate over the image and scale it down to a target pixel size. It's important to note again, that there is no thumbnail of the image stored locally and it is recalculated every time you call the method. This is extremely useful further along in SCEMATK workflows but does mean they can take a few seconds to appear here. Here is an example of calling the `show_thumb` method on our example image:
-
-```python
-image.show_thumb()
-```
-
-![Example Thumbnail](./thumb.png)
-
-Rather than visualising the whole of the WSI, you can also plot just a small region using the `show_region` method. This method takes 4 arguments, the first two are the y and x coordinates of the top left corner of the region you want to plot, the second two are the height and width of the region you want to plot. Here is an example of calling the `show_region` method on our example image:
-
-```python
-image.show_region(20000, 10000, 1000, 1000)
-```
-
-![Example Region](./region.png)
-
-## Other Useful Features
-
-There are a couple of other features of the SCEMATK Image object that are worth mentioning. Where possible, SCEMATK will perform operations on images measuring distances using microns rather than pixels. To do this it reads the metadata of the TIFF and finds the microns per pixel (mpp) in both the x direction and the y direction. If they are both the same then it will save this as the `mpp` attribute of the image object.
-
-```python
-image.mpp
-```
-
-```
-0.499
-```
-
-If this attribute is not `None`, SCEMATK can use this to convert distances in microns to pixels using the `pixel_from_micron` method. Here SCEMATK finds how many pixels in this image are equivalent to 5 microns.
-
-```python
-image.pixel_from_micron(5)
-```
-
-```
-10.02004008016032
-```
-
-If you are familiar with Dask, the SCEMATK Image object also has `compute` and `persist` functions that will call `compute` and `persist` respectively on the Dask Array that contains the image. This can be useful if you want to force the image to be loaded into memory.
