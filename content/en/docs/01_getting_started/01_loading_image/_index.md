@@ -100,3 +100,5 @@ image.show_region(*roi.get_region())
 ```
 
 ![Annotated Region of the WSI](./image_region_anno.png)
+
+SCEMATK has more functionality for displaying images, but these are covered later in the documentation as they include other SCEMATK objects not yet introduced here.
