@@ -80,3 +80,23 @@ image.show_thumb(grid_lines="red")
 ```
 
 ![Image Thumbnail With Grid Lines](./image_thumb_lines.png)
+
+Now lets say you want to look closer at the tissue fold in the top right of the image, you can use these grid lines to estimate where it is. But rather than trying the `show_region`` command until you get the exact part you want, you can overlay an annotation on the image and move it until you have your desired region, like this:
+
+```
+from scematk.annotate import Rectangle
+
+roi = Rectangle(4000, 35000, 2000, 2000)
+
+image.show_thumb(grid_lines="red", annotate=roi)
+```
+
+![Image Thumbnail With Grid Lines and Annotation](./image_thumb_lines_anno.png)
+
+The arguments to the Rectangle annotation are the same as those for show region. One you have your annotation in the right place you can either use those coordinates to show you that region, or you can extract them directly from the annotation like this:
+
+```
+image.show_region(*roi.get_region())
+```
+
+![Annotated Region of the WSI](./image_region_anno.png)
