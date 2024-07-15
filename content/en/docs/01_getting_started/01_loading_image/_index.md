@@ -62,3 +62,21 @@ image.show_thumb()
 ```
 
 ![Image Thumbnail](./image_thumb.png)
+
+As well as viewing the image as a whole, a particular region can be displayed using the `show_region` method. This takes 4 arguments, the y coordinate of the top left corner, the x coordinate of the top left corner, the width of the region and the height of the region.
+
+```
+image.show_region(20000, 10000, 1000, 1000)
+```
+
+![Image Region](./image_region.png)
+
+This shows a region at (20000, 10000) with a height and width of 1000.
+
+It can be hard to guess where the region of interest (ROI) is within your image. SCEMATK has a couple of features to help you. The first of these is overlaying girdlines on the image thumbnail. The `grid_lines` argument will make a grid where the lines are 10000 pixels apart to help you judge where regions are in the image. Set the value equal to the colour you want your grid lines to be.
+
+```
+image.show_thumb(grid_lines="red")
+```
+
+![Image Thumbnail With Grid Lines](./image_thumb_lines.png)
