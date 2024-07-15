@@ -49,3 +49,4 @@ image = read_zarr_ubimg('./raw_image/getting_started.zarr', './raw_image/getting
 image
 ```
 
+![Raw Image Output](./raw_image_output.png)
