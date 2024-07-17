@@ -16,7 +16,7 @@ pip install scematk
 
 To install the latest development version of SCEMATK you can also install it straight from GitHub
 
-```
+```bash
 pip install git+https://github.com/SCEMA-WSI/scematk.git
 ```
 
