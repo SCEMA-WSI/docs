@@ -37,4 +37,61 @@ from scematk.segment.tissue import OtsuThresholder
 otsu_thresholder = OtsuThresholder()
 ```
 
-For more information on Otsu's method for image segmentation you can read more [here](https://en.wikipedia.org/wiki/Otsu%27s_method).
+For more information on Otsu's method for image segmentation you can read more [here](https://en.wikipedia.org/wiki/Otsu%27s_method). Otsu's method requires us to fit the thresholder, this can be done like this:
+
+```python
+otsu_thresholder.fit(image)
+```
+
+Fitting modules is one of the three actions that causes an image to compute, this is why this process is not instantaneous. After fitting, we can then run the thresholder on the image to generate a tissue mask.
+
+```python
+tissue_mask = otsu_thresholder.run(image)
+tissue_mask
+```
+
+![Tissue Mask Output](./tissue_mask_plaque.png)
+
+# Visualising the Tissue Mask
+
+As you can see, SCEMATK considers this mask to be an image, therefore we can visualise it like an image using the `show_thumb` and `show_region` methods.
+
+```python
+tissue_mask.show_thumb()
+```
+
+![Tissue Mask Thumbnail](./raw_mask_thumb.png)
+
+```python
+tissue_mask.show_region(20000, 10000, 1000, 1000)
+```
+
+![Tissue Mask Region](./raw_mask_region.png)
+
+But seeing these masks with no context is not useful. This is why SCEMATK allows you to overlay this mask on the original image to see whaat parts are considered tissue. To do this, visualise the image and then set the overlay argument to the tissue mask, for a binary mask this will set the background regions to black.
+
+```python
+image.show_thumb(overlay=tissue_mask)
+```
+
+![Raw Image Thumb Overlayed](./raw_overlay_thumb.png)
+
+```python
+image.show_region(20000, 10000, 1000, 1000, overlay=tissue_mask)
+```
+
+![Raw Image Region Overlayed](./raw_overlay_region.png)
+
+We can also invert this overlay so that the region that is considered tissue will be shown in white and only the background is shown. This is useful to find any regions that were missed by the tissue mask.
+
+```python
+image.show_thumb(overlay=tissue_mask, invert_overlay=True)
+```
+
+![Raw Image Overlay Inverted](./raw_overlay_thumb_inv.png)
+
+```python
+image.show_region(20000, 10000, 1000, 1000, overlay=tissue_mask, invert_overlay=True)
+```
+
+![Raw Image Overlay Inverted](./raw_overlay_region_inv.png)
