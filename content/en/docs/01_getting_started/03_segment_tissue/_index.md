@@ -95,3 +95,39 @@ image.show_region(20000, 10000, 1000, 1000, overlay=tissue_mask, invert_overlay=
 ```
 
 ![Raw Image Overlay Inverted](./raw_overlay_region_inv.png)
+
+# Preprocecessors and Postprocessors
+
+This output mask could be cleaned up a bit. One simple transformation that could be applied to it would be to perform binary closing and binary opening morphological operations. We can do this using SCEMATK processes.
+
+```python
+from scematk.process import Processor
+from scematk.process.morphology import BinaryClosing, BinaryOpening
+
+processor = Processor([BinaryClosing(2), BinaryOpening(2)])
+tissue_mask_processed = processor.run(tissue_mask)
+```
+
+Then we can look at how this has changed the mask.
+
+```python
+tissue_mask_processed.show_thumb()
+```
+![Processed Thumbnail](./processed_thumb.png)
+
+```python
+tissue_mask_processed.show_region(20000, 10000, 1000, 1000)
+```
+
+![Processed Region](./processed_region.png)
+
+Rather than having to apply these processed to every image, we can attach this processor as a postprocessor of the Otsu thresholder and it will be automatically applied every time you run the otsu thresholder.
+
+```python
+otsu_thresholder = OtsuThresholder(
+    postprocessor=processor
+)
+
+otsu_thresholder.fit(image)
+tissue_mask = otsu_thresholder.run(image)
+```
