@@ -14,6 +14,12 @@ SCEMATK is available on PyPI and can be installed using pip. To install SCEMATK 
 pip install scematk
 ```
 
+To install the latest development version of SCEMATK you can also install it straight from GitHub
+
+```
+pip install git+https://github.com/SCEMA-WSI/scematk.git
+```
+
 ## Downloading Example Image
 
 To get started we will download an example image to work with. We will use the `download_example` function from SCEMATK to download an example image. Open up a Jupyter notebook and then run the following code (this may take a couple of minutes):
