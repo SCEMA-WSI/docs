@@ -63,7 +63,7 @@ This output shows basic information about the image but does not load the image 
 
 These SCEMATK image objects have a lot of functionality to allow you to view them. The simplest of these is the `show_thumb` method that will calculate and then show you a thumbnail of the current image. Remember that this thumbnail is being dynamically calculated and displayed and therefore there may be some processing time required to display it.
 
-```
+```python
 image.show_thumb()
 ```
 
@@ -71,7 +71,7 @@ image.show_thumb()
 
 As well as viewing the image as a whole, a particular region can be displayed using the `show_region` method. This takes 4 arguments, the y coordinate of the top left corner, the x coordinate of the top left corner, the width of the region and the height of the region.
 
-```
+```python
 image.show_region(20000, 10000, 1000, 1000)
 ```
 
@@ -81,7 +81,7 @@ This shows a region at (20000, 10000) with a height and width of 1000.
 
 It can be hard to guess where the region of interest (ROI) is within your image. SCEMATK has a couple of features to help you. The first of these is overlaying girdlines on the image thumbnail. The `grid_lines` argument will make a grid where the lines are 10000 pixels apart to help you judge where regions are in the image. Set the value equal to the colour you want your grid lines to be.
 
-```
+```python
 image.show_thumb(grid_lines="red")
 ```
 
@@ -89,7 +89,7 @@ image.show_thumb(grid_lines="red")
 
 Now lets say you want to look closer at the tissue fold in the top right of the image, you can use these grid lines to estimate where it is. But rather than trying the `show_region`` command until you get the exact part you want, you can overlay an annotation on the image and move it until you have your desired region, like this:
 
-```
+```python
 from scematk.annotate import Rectangle
 
 roi = Rectangle(4000, 35000, 2000, 2000)
@@ -101,7 +101,7 @@ image.show_thumb(grid_lines="red", annotate=roi)
 
 The arguments to the Rectangle annotation are the same as those for show region. One you have your annotation in the right place you can either use those coordinates to show you that region, or you can extract them directly from the annotation like this:
 
-```
+```python
 image.show_region(*roi.get_region())
 ```
 
