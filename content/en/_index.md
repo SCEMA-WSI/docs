@@ -18,8 +18,8 @@ It is currently under heavy development so features may change and any input is 
 
 
 {{% blocks/section color="dark" type="row" %}}
-{{% blocks/feature icon="fa-lightbulb" title="New chair metrics!" %}}
-Simple and extendable. Get involved with development now!
+{{% blocks/feature icon="fa-lightbulb" title="Simple and extendable!" %}}
+Get involved with development now!
 
 Please follow this space for updates!
 {{% /blocks/feature %}}
