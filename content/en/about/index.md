@@ -13,23 +13,20 @@ Large scale morphological analysis at single cell resolution
 
 {{% blocks/lead %}}
 
-Goldydocs is a sample site using the [Docsy](https://github.com/google/docsy)
-Hugo theme that shows what it can do and provides you with a template site
-structure. It’s designed for you to clone and edit as much as you like. See the
-different sections of the documentation and site for more ideas.
+SCEMATK is an all in one tool for the analysis of WSI's via morphological profiling and spatial statistics.
 
 {{% /blocks/lead %}}
 
 {{% blocks/section %}}
 
-# This is another section
+# Profile cells at single cell resolution
 {.text-center}
 
 {{% /blocks/section %}}
 
 {{% blocks/section %}}
 
-# This is another section
+# Spatially analyse the relationship between features across a tissue
 {.text-center}
 
 {{% /blocks/section %}}
