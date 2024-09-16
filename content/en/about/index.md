@@ -1,5 +1,5 @@
 ---
-title: About Goldydocs
+title: About SCEMATK
 linkTitle: About
 menu: {main: {weight: 10}}
 ---
