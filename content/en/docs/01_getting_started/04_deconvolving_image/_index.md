@@ -4,8 +4,6 @@ description: Deconvolve stains with SCEMATK
 weight: 40
 ---
 
-Hello! Here we are going to show you how to get started with SCEMATK. We will download an image and show you how to open it and visualise it using Python.
-
 # Stain Deconvolver
 
 Just like with segmenting a tissue, there is a module for deconvolving stains. Again, lets start by loading our example image.
